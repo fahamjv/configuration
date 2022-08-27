@@ -1,0 +1,111 @@
+## black:  colour232
+## white:  colour255
+## dark-gray:  colour234
+## ligt-gray: colour7
+## highlights: colour14
+## attention: colour202
+## decoration: colour12
+## green: colour28
+## red: colour52
+
+
+set -g default-terminal "screen-256color"
+
+set -g mouse on
+
+## Loud or quiet?
+set-option -g visual-activity off  # Do not notify for events on panes
+set-option -g visual-bell on
+set-option -g visual-silence off
+set-window-option -g monitor-activity on
+set-option -g bell-action none
+
+
+
+## WINDOWS #################
+
+## Window selection menu (usually bound to cb-w)
+setw -g mode-bg colour24
+setw -g mode-fg colour255
+
+
+
+
+## PANES ####################
+
+## Separation border
+set -g pane-border-bg colour255
+set -g pane-border-fg colour16
+
+set -g pane-active-border-bg colour12
+set -g pane-active-border-fg colour16
+
+bind-key '|' split-window -h
+
+
+
+## Highlight current pane
+set -g window-active-style 'fg=colour255,bg=colour16'  # Current pane
+set -g window-style 'fg=colour7,bg=colour16'   # Other panes
+
+
+
+## STATUS BAR ####################
+
+## Status bar design
+set -g status-justify centre
+set -g status-interval 2
+set -g status-position bottom
+set -g status-bg colour16
+set -g status-fg colour255
+
+
+
+## Show PREFIX on right side when c-b
+#set -g status-left '#[fg=colour232,bg=colour202]#{?client_prefix, <Prefix> ,}#[fg=colour255,bg=colour232,bold][#S] '
+set -g status-left-length 20
+set -g status-left '#[fg=colour28] [ #(hostname) ]['
+
+
+## Show prefix on left & date & time
+#set -g status-right '#[fg=colour19] '
+
+set -g status-right '#[fg=colour28] ][ #[fg=colour19,bg=colour16]%m/%d #[fg=colour255,bg=colour16]%H:%M #[fg=colour28]]#[fg=colour232,bg=colour202,bold]#{?client_prefix, <Prefix> ,}'
+
+set -g status-right-length 50
+
+## Show system load and other info
+#set-option -g status-right '#(uptime | rev | cut -d":" -f1 | rev | sed s/,//g )'
+
+
+## Selected window
+setw -g window-status-current-fg colour255
+setw -g window-status-current-bg colour232
+setw -g window-status-current-attr bold
+
+setw -g window-status-current-format '#[fg=colour52,bg=colour16] (#[fg=colour255,bg=colour16]#I★ $#W#[fg=colour52,bg=colour16])'
+
+
+
+## Background windows
+setw -g window-status-fg colour248
+setw -g window-status-bg colour16
+setw -g window-status-attr bold
+setw -g window-status-format ' #I$ #W '
+
+
+## Background windows with event
+setw -g window-status-bell-fg colour7
+setw -g window-status-bell-bg colour7
+
+
+
+## MESSAGES ####################
+set -g pane-border-fg colour16  
+set -g pane-active-border-fg colour16
+set -g message-attr bold
+set -g message-fg colour255
+set -g message-bg colour16
+set -g message-command-fg colour16
+set -g message-command-bg colour16
+
